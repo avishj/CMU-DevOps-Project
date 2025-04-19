@@ -5,69 +5,110 @@ services:
     image: gitlab/gitlab-ce:latest
     container_name: gitlab
     restart: always
-    hostname: '0.0.0.0'
+    hostname: '0.0.0.0' # *** REPLACE THIS ***
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        # --- Main GitLab URL Configuration ---
-        # *** MAKE SURE THIS MATCHES hostname AND THE HTTP PORT MAPPING BELOW ***
-        external_url 'http://0.0.0.0:8080' # *** REPLACE THIS ***
-
-        # --- Adjust Port for SSH Clone URL ---
+        external_url 'http://0.0.0.0:8080' # *** REPLACE THIS & MATCH HOST PORT ***
         gitlab_rails['gitlab_shell_ssh_port'] = 2222
-
-        # --- Resource Configuration (Optional but Recommended) ---
-        # Adjust based on your server resources. Check GitLab docs for recommendations.
-        # unicorn['worker_processes'] = 3
-        # postgresql['shared_buffers'] = "256MB"
-        # sidekiq['concurrency'] = 10
-
-        # --- Prometheus Metrics Endpoint (Optional - requires further config sometimes) ---
+        # --- Optional: Enable GitLab Prometheus metrics ---
+        # prometheus_monitoring['enable'] = true
         # gitlab_exporter['enable'] = true
-        # prometheus_monitoring['enable'] = true # Enables various exporters bundled with Omnibus
-        # node_exporter['enable'] = true
-        # redis_exporter['enable'] = true
-        # postgres_exporter['enable'] = true
-        # pgbouncer_exporter['enable'] = true
-        # gitlab_workhorse['prometheus_listen_addr'] = '0.0.0.0:9229' # Example
-
-        # --- Add other gitlab.rb configurations here ---
-        # Example: Disable built-in Let's Encrypt if using your own proxy/certs
-        # letsencrypt['enable'] = false
-        # Example: Configure SMTP for emails
-        # gitlab_rails['smtp_enable'] = true
-        # gitlab_rails['smtp_address'] = "smtp.example.com"
-        # ... etc ...
     ports:
-      # Map host ports to container ports (host:container)
-      - "8080:80"    # GitLab Web UI (HTTP)
-      - "8443:443"   # GitLab Web UI (HTTPS)
-      - "2222:22"    # GitLab SSH access
+      - "8080:80"
+      - "8443:443"
+      - "2222:22"
     volumes:
-      # Mount host directories into the container for persistence
       - ./data/gitlab/config:/etc/gitlab
       - ./data/gitlab/logs:/var/log/gitlab
       - ./data/gitlab/data:/var/opt/gitlab
-    shm_size: '256m' # Recommended by GitLab docs to prevent issues
+    shm_size: '256m'
     networks:
-      - devops-spring # Connect to the pre-defined network
+      - devops-spring
 
   prometheus:
-    image: prom/prometheus:latest # Use a specific version for production stability
+    image: prom/prometheus:latest
     container_name: prometheus
     restart: always
     ports:
-      - "9090:9090" # Prometheus Web UI
+      - "9090:9090"
     volumes:
-      # Mount configuration file and data directory
-      - ./prometheus/config:/etc/prometheus
-      - ./prometheus/data:/prometheus
+      # --- UPDATED PATHS ---
+      - ./data/prometheus/config:/etc/prometheus # Mount the specific config dir
+      - ./data/prometheus/data:/prometheus      # Mount the data dir
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      # Optional: Enable hot-reloading config via API endpoint
+      - '--config.file=/etc/prometheus/prometheus.yml' # Container path remains the same
+      - '--storage.tsdb.path=/prometheus'              # Container path remains the same
       - '--web.enable-lifecycle'
     networks:
-      - devops-spring # Connect to the pre-defined network
+      - devops-spring
+
+  sonarqube:
+    image: sonarqube:9.9-community
+    container_name: sonarqube
+    restart: always
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    ports:
+      - "9002:9000"
+    volumes:
+      - ./data/sonarqube/data:/opt/sonarqube/data
+      - ./data/sonarqube/logs:/opt/sonarqube/logs
+      - ./data/sonarqube/extensions:/opt/sonarqube/extensions
+    networks:
+      - devops-spring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./data/grafana:/var/lib/grafana # Mount the main data dir
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin # CHANGE THIS IN PRODUCTION!
+    networks:
+      - devops-spring
+    depends_on:
+      - prometheus
+
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    container_name: jenkins
+    restart: always
+    ports:
+      - "8081:8080"
+      - "50001:50000"
+    volumes:
+      - ./data/jenkins:/var/jenkins_home # Mount the main data dir
+    environment:
+      # - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+      - JENKINS_OPTS="--prefix=/jenkins"
+    networks:
+      - devops-spring
+
+  zap:
+    image: owasp/zap2docker-stable
+    container_name: zap
+    restart: always
+    ports:
+      - "8090:8080"
+    volumes:
+      - ./data/zap:/home/zap/.ZAP # Mount the main data dir
+    command: >
+      zap.sh -daemon -port 8080 -host 0.0.0.0
+      -config api.disablekey=true
+      -config api.addrs.addr.name=.*
+      -config api.addrs.addr.regex=true
+      -config replacer.full_list\(0\).description=authHeader
+      -config replacer.full_list\(0\).enabled=false
+      -config replacer.full_list\(0\).matchtype=REQ_HEADER
+      -config replacer.full_list\(0\).matchstr=Authorization
+      -config replacer.full_list\(0\).regex=false
+      -config replacer.full_list\(0\).replacement=
+    networks:
+      - devops-spring
 
 networks:
   devops-spring:
+    driver: bridge
