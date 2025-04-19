@@ -21,7 +21,7 @@ mkdir -p ../data/zap         # ZAP session data, reports, configs
 touch ../data/prometheus/config/prometheus.yml
 
 # Fix permissions (insecure but simple for local development)
-chmod -R 700 ../data/
+chmod -R 777 ../data/
 
 # Final directory structure:
 
