@@ -94,7 +94,7 @@ services:
     networks:
       - devops-spring
     ports:
-      - "8080:8080"
+      - "8082:8080"
     command: >
       zap.sh -daemon -port 8080 -host 0.0.0.0
       -config api.disablekey=true
