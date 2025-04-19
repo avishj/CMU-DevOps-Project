@@ -3,10 +3,10 @@ services:
     image: gitlab/gitlab-ce:latest
     container_name: gitlab
     restart: always
-    hostname: '0.0.0.0'
+    hostname: '127.0.0.1'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://0.0.0.0:8085'
+        external_url 'http://127.0.0.1:8085'
         gitlab_rails['gitlab_shell_ssh_port'] = 2222
         # Enable GitLab Prometheus metrics
         prometheus_monitoring['enable'] = true
