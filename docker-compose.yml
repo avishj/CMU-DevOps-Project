@@ -1,4 +1,4 @@
-# services:
+services:
 #   gitlab:
 #     image: gitlab/gitlab-ce:latest
 #     container_name: gitlab
