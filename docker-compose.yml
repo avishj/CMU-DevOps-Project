@@ -7,12 +7,11 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      # --- UPDATED PATHS ---
-      - ./data/prometheus/config:/etc/prometheus # Mount the specific config dir
-      - ./data/prometheus/data:/prometheus      # Mount the data dir
+      - ./data/prometheus/config:/etc/prometheus 
+      - ./data/prometheus/data:/prometheus      
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml' # Container path remains the same
-      - '--storage.tsdb.path=/prometheus'              # Container path remains the same
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'             
       - '--web.enable-lifecycle'
     networks:
       - devops-spring
@@ -39,9 +38,9 @@ services:
     ports:
       - "3001:3000"
     volumes:
-      - ./data/grafana:/var/lib/grafana # Mount the main data dir
+      - ./data/grafana:/var/lib/grafana 
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin # CHANGE THIS IN PRODUCTION!
+      - GF_SECURITY_ADMIN_PASSWORD=admin
     networks:
       - devops-spring
     depends_on:
@@ -55,7 +54,7 @@ services:
       - "8081:8080"
       - "50001:50000"
     volumes:
-      - ./data/jenkins:/var/jenkins_home # Mount the main data dir
+      - ./data/jenkins:/var/jenkins_home 
     environment:
       # - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
       - JENKINS_OPTS="--prefix=/jenkins"
