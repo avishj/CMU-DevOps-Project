@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    restart: always
+    hostname: '0.0.0.0'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        # --- Main GitLab URL Configuration ---
+        # *** MAKE SURE THIS MATCHES hostname AND THE HTTP PORT MAPPING BELOW ***
+        external_url 'http://0.0.0.0:8080' # *** REPLACE THIS ***
+
+        # --- Adjust Port for SSH Clone URL ---
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222
+
+        # --- Resource Configuration (Optional but Recommended) ---
+        # Adjust based on your server resources. Check GitLab docs for recommendations.
+        # unicorn['worker_processes'] = 3
+        # postgresql['shared_buffers'] = "256MB"
+        # sidekiq['concurrency'] = 10
+
+        # --- Prometheus Metrics Endpoint (Optional - requires further config sometimes) ---
+        # gitlab_exporter['enable'] = true
+        # prometheus_monitoring['enable'] = true # Enables various exporters bundled with Omnibus
+        # node_exporter['enable'] = true
+        # redis_exporter['enable'] = true
+        # postgres_exporter['enable'] = true
+        # pgbouncer_exporter['enable'] = true
+        # gitlab_workhorse['prometheus_listen_addr'] = '0.0.0.0:9229' # Example
+
+        # --- Add other gitlab.rb configurations here ---
+        # Example: Disable built-in Let's Encrypt if using your own proxy/certs
+        # letsencrypt['enable'] = false
+        # Example: Configure SMTP for emails
+        # gitlab_rails['smtp_enable'] = true
+        # gitlab_rails['smtp_address'] = "smtp.example.com"
+        # ... etc ...
+    ports:
+      # Map host ports to container ports (host:container)
+      - "8080:80"    # GitLab Web UI (HTTP)
+      - "8443:443"   # GitLab Web UI (HTTPS)
+      - "2222:22"    # GitLab SSH access
+    volumes:
+      # Mount host directories into the container for persistence
+      - ./data/gitlab/config:/etc/gitlab
+      - ./data/gitlab/logs:/var/log/gitlab
+      - ./data/gitlab/data:/var/opt/gitlab
+    shm_size: '256m' # Recommended by GitLab docs to prevent issues
+    networks:
+      - devops-spring # Connect to the pre-defined network
+
+  prometheus:
+    image: prom/prometheus:latest # Use a specific version for production stability
+    container_name: prometheus
+    restart: always
+    ports:
+      - "9090:9090" # Prometheus Web UI
+    volumes:
+      # Mount configuration file and data directory
+      - ./prometheus/config:/etc/prometheus
+      - ./prometheus/data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      # Optional: Enable hot-reloading config via API endpoint
+      - '--web.enable-lifecycle'
+    networks:
+      - devops-spring # Connect to the pre-defined network
+
+networks:
+  devops-spring:

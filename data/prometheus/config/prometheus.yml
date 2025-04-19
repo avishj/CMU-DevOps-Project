@@ -1,0 +1,26 @@
+# prometheus/config/prometheus.yml
+
+global:
+  scrape_interval: 15s # How frequently to scrape targets by default.
+  evaluation_interval: 15s # How frequently to evaluate rules.
+
+scrape_configs:
+  # Scrape Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090'] # Prometheus server runs on 9090 internally
+
+  # --- Add other scrape jobs below ---
+  # Example: Scraping GitLab Metrics (Requires GitLab configuration adjustments)
+  # GitLab CE bundles exporters. You might need to enable/configure them in gitlab.rb
+  # and potentially allowlist Prometheus's IP in GitLab settings.
+  # Consult GitLab documentation for enabling /-/metrics endpoint.
+  #
+  # - job_name: 'gitlab'
+  #   metrics_path: '/-/metrics' # Common path for GitLab metrics
+  #   scheme: http # Or https if GitLab is configured for it internally
+  #   static_configs:
+  #     # Use the service name defined in docker-compose.yml and the internal port
+  #     - targets: ['gitlab:80'] # Assuming metrics are exposed on the main port
+  #     # Or maybe a specific exporter port if configured differently:
+  #     # - targets: ['gitlab:9168'] # Example: gitlab-exporter specific port
