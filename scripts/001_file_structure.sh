@@ -1,3 +1,4 @@
+#!/bin/bash
 # This script creates the necessary directory structure for the Final Project.
 
 mkdir -p ../data # Create a base directory for volumes for the project
