@@ -5,14 +5,14 @@ services:
     image: gitlab/gitlab-ce:latest
     container_name: gitlab
     restart: always
-    hostname: '0.0.0.0' # *** REPLACE THIS ***
+    hostname: '0.0.0.0'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://0.0.0.0:8080' # *** REPLACE THIS & MATCH HOST PORT ***
+        external_url 'http://0.0.0.0:8080'
         gitlab_rails['gitlab_shell_ssh_port'] = 2222
-        # --- Optional: Enable GitLab Prometheus metrics ---
-        # prometheus_monitoring['enable'] = true
-        # gitlab_exporter['enable'] = true
+        # Enable GitLab Prometheus metrics
+        prometheus_monitoring['enable'] = true
+        gitlab_exporter['enable'] = true
     ports:
       - "8080:80"
       - "8443:443"
@@ -94,7 +94,7 @@ services:
     ports:
       - "8090:8080"
     volumes:
-      - ./data/zap:/home/zap/.ZAP # Mount the main data dir
+      - ./data/zap:/home/zap/.ZAP
     command: >
       zap.sh -daemon -port 8080 -host 0.0.0.0
       -config api.disablekey=true
