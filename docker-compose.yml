@@ -1,4 +1,27 @@
-services:
+# services:
+#   gitlab:
+#     image: gitlab/gitlab-ce:latest
+#     container_name: gitlab
+#     restart: always
+#     hostname: '0.0.0.0'
+#     environment:
+#       GITLAB_OMNIBUS_CONFIG: |
+#         external_url 'http://0.0.0.0:8085'
+#         gitlab_rails['gitlab_shell_ssh_port'] = 2222
+#         # Enable GitLab Prometheus metrics
+#         prometheus_monitoring['enable'] = true
+#         gitlab_exporter['enable'] = true
+#     ports:
+#       - "8085:80"
+#       - "8443:443"
+#       - "2222:22"
+#     volumes:
+#       - ./data/gitlab/config:/etc/gitlab
+#       - ./data/gitlab/logs:/var/log/gitlab
+#       - ./data/gitlab/data:/var/opt/gitlab
+#     shm_size: '256m'
+#     networks:
+#       - devops-spring
 
   prometheus:
     image: prom/prometheus:latest
@@ -68,7 +91,9 @@ services:
     networks:
       - devops-spring
     ports:
-      - "8082:8080"
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - ./data/zap:/home/zap/.ZAP
     command: >
