@@ -1,3 +1,8 @@
+#!/bin/bash
+
+mkdir -p ../data/prometheus/config
+
+cat > ../data/prometheus/config/prometheus.yml << 'EOF'
 global:
   scrape_interval: 15s
   evaluation_interval: 15s
@@ -20,3 +25,4 @@ scrape_configs:
   #   metrics_path: '/prometheus' # Requires Prometheus Metrics Plugin in Jenkins
   #   static_configs:
   #     - targets: ['jenkins:8080']
+EOF
