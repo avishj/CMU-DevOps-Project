@@ -12,11 +12,9 @@ mkdir -p data/sonarqube/data   # For SonarQube database, search indexes
 mkdir -p data/sonarqube/logs   # For SonarQube application logs
 mkdir -p data/sonarqube/extensions # For SonarQube plugins
 
-mkdir -p data/grafana/data     # For Grafana dashboards, plugins, database
-
-mkdir -p data/jenkins/data     # Jenkins home directory
-
-mkdir -p data/zap/data         # ZAP session data, reports, configs
+mkdir -p data/grafana     # For Grafana dashboards, plugins, database
+mkdir -p data/jenkins     # Jenkins home directory
+mkdir -p data/zap         # ZAP session data, reports, configs
 
 # Create the Prometheus configuration file
 touch data/prometheus/config/prometheus.yml
