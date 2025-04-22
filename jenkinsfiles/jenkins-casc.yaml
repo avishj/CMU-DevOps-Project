@@ -1,0 +1,86 @@
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - string:
+              scope: GLOBAL
+              id: "github-pat-jenkins" 
+              secret: "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" 
+              description: "GitHub PAT for Jenkins Webhook Automation"
+          - string:
+              scope: GLOBAL
+              id: "sonarqube-token-jenkins" 
+              secret: "squ_9bd7c664e4941bd4e7670a88ed93d68af40b42a3" 
+              description: "SonarQube analysis token"
+
+jenkins:
+  systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code plugin"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          password: "password"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+        allowAnonymousRead: false
+
+unclassified:
+  location:
+    url: "https://216a-128-237-82-107.ngrok-free.app/jenkins/github-webhook/"
+  githubpluginconfig:
+    configs:
+      - name: "GitHub" 
+        apiUrl: "https://api.github.com"
+        credentialsId: "github-pat-jenkins" # Use the ID defined above
+        manageHooks: true
+  # gitHubConfiguration:
+  #   endpoints:
+  #     - name: "GitHub" 
+  #       apiUri: "https://api.github.com"
+  #       credentialsId: "github-pat-jenkins" # Use the ID defined above
+  #       manageHooks: true 
+
+
+# Tool Configuration
+tool:
+  maven:
+    installations:
+      - name: maven3
+        properties:
+          - installSource:
+              installers:
+                - maven:
+                    id: "3.8.4"
+
+# Sample Job Configuration
+# jobs:
+#   - script: >
+#       pipelineJob('example-pipeline-job') {
+#       definition {
+#         cps {
+#             script('''
+#                 pipeline {
+#                     agent any
+#                     stages {
+#                         stage('Build') {
+#                             steps {
+#                                 echo 'Building...'
+#                             }
+#                         }
+#                         stage('Test') {
+#                             steps {
+#                                 echo 'Testing...'
+#                             }
+#                         }
+#                         stage('Deploy') {
+#                             steps {
+#                                 echo 'Deploying...'
+#                             }
+#                         }
+#                     }
+#                 }
+#             ''')
+#             }
+#           }
+#         } 

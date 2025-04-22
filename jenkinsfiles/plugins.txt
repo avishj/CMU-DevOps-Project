@@ -1,0 +1,11 @@
+configuration-as-code:latest  
+git:latest
+pipeline-stage-view:latest
+workflow-aggregator:latest
+docker-plugin:latest          # Allows Jenkins to manage Docker containers as agents [1]
+docker-workflow:latest        # Provides Docker steps for Pipelines (docker.image, etc.) [1]
+blueocean:latest
+matrix-auth:latest
+github:latest
+pipeline-github-lib
+workflow-multibranch:latest
