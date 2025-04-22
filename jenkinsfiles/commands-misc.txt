@@ -1,0 +1,11 @@
+Add the Jenkins user to the Docker group inside the container:
+
+docker exec --user root jenkins sh -c 'groupadd -g 999 docker && usermod -aG docker jenkins'
+Note: 999 should match the GID of the docker group on your host. You can check it with getent group docker on your host.
+
+Fix socket permissions directly (alternative approach):
+
+docker exec --user root jenkins sh -c 'chmod 666 /var/run/docker.sock'
+This is less secure but a quick fix.
+
+Restart the Jenkins container to apply the changes:

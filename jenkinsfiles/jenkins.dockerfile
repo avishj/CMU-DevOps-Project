@@ -4,8 +4,11 @@ FROM jenkins/jenkins:lts-jdk17
 # Switch to root user to change permissions if needed and install plugins
 USER root
 
-RUN apt-get update && apt-get install -y --no-install-recommends docker.io && rm -rf /var/lib/apt/lists/*
-
+# RUN apt-get update && apt-get install -y --no-install-recommends docker.io && apt-get install -y iputils-ping && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends docker.io iputils-ping curl && \
+    rm -rf /var/lib/apt/lists/*
+    
 # Copy the custom plugins list i have created into the jenkins specific directory
 COPY ./plugins.txt /usr/share/jenkins/ref/plugins.txt
 

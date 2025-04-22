@@ -9,3 +9,6 @@ matrix-auth:latest
 github:latest
 pipeline-github-lib
 workflow-multibranch:latest
+job-dsl:latest
+htmlpublisher
+workflow-cps

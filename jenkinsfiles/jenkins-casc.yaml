@@ -2,10 +2,11 @@ credentials:
   system:
     domainCredentials:
       - credentials:
-          - string:
+          - usernamePassword:
               scope: GLOBAL
-              id: "github-pat-jenkins" 
-              secret: "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" 
+              id: "github-pat-jenkins"
+              username: "Sujay99999" 
+              password: "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"
               description: "GitHub PAT for Jenkins Webhook Automation"
           - string:
               scope: GLOBAL
@@ -53,34 +54,34 @@ tool:
                 - maven:
                     id: "3.8.4"
 
-# Sample Job Configuration
-# jobs:
-#   - script: >
-#       pipelineJob('example-pipeline-job') {
-#       definition {
-#         cps {
-#             script('''
-#                 pipeline {
-#                     agent any
-#                     stages {
-#                         stage('Build') {
-#                             steps {
-#                                 echo 'Building...'
-#                             }
-#                         }
-#                         stage('Test') {
-#                             steps {
-#                                 echo 'Testing...'
-#                             }
-#                         }
-#                         stage('Deploy') {
-#                             steps {
-#                                 echo 'Deploying...'
-#                             }
-#                         }
-#                     }
-#                 }
-#             ''')
-#             }
-#           }
-#         } 
+jobs:
+  - script: |
+      multibranchPipelineJob('spring-petclinic-multibranch') {
+        branchSources {
+          branchSource {
+            source {
+              git {
+                id('spring-petclinic-github')
+                remote('https://github.com/Sujay99999/spring-petclinic.git')
+                credentialsId('github-pat-jenkins')
+                
+                traits {
+                  gitBranchDiscovery()
+                  
+                }
+              }
+            }
+          }
+        }
+        configure { node ->
+          node / 'triggers' << 'com.cloudbees.hudson.plugins.folder.computed.PeriodicFolderTrigger' {
+            spec('*/30 * * * * *') // cron expression for every 30 seconds
+            interval('30000')      // milliseconds (30 seconds)
+          }
+        }
+        orphanedItemStrategy {
+          discardOldItems {
+            numToKeep(10)
+          }
+        }
+      }

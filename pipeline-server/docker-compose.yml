@@ -81,16 +81,28 @@ services:
       - "host.docker.internal:host-gateway"
     volumes:
       - ./pipeline-server/data/zap:/home/zap/.ZAP
+      - ./pipeline-server/data/zap-reports:/var/jenkins_home/zap-reports
     command: >
       zap.sh -daemon -port 8080 -host 0.0.0.0
       -config api.disablekey=true
       -config api.addrs.addr.name=.*
       -config api.addrs.addr.regex=true
+    environment:
+      - TESTCONTAINERS_RYUK_DISABLED=true
     deploy:
       resources:
         limits:
           memory: 3G
+    depends_on:
+      - juice-shop
 
+  juice-shop:
+    image: bkimminich/juice-shop
+    container_name: juice-shop
+    networks:
+      - devops-spring
+    ports:
+      - "8888:3000"
 
 
   jenkins:
@@ -106,13 +118,15 @@ services:
     volumes:
       # - jenkins_data:/var/jenkins_home 
       # - ./data/jenkins:/var/jenkins_home
-      - ./data/jenkins:/var/jenkins_home 
+      # - ./data/jenkins:/var/jenkins_home 
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       # - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
       - JENKINS_OPTS="--prefix=/jenkins"
     networks:
       - devops-spring
+    depends_on:
+      - zap
     
 
   
