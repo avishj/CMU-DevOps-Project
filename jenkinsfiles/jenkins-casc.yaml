@@ -35,6 +35,12 @@ unclassified:
         apiUrl: "https://api.github.com"
         credentialsId: "github-pat-jenkins" # Use the ID defined above
         manageHooks: true
+  prometheusConfiguration:
+    collectingMetricsPeriodInSeconds: 15
+    defaultNamespace: "jenkins"
+    path: "/prometheus"
+    useAuthenticatedEndpoint: false
+
   # gitHubConfiguration:
   #   endpoints:
   #     - name: "GitHub" 
