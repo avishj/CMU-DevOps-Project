@@ -42,7 +42,7 @@ services:
   sonarqube:
     image: sonarqube:9.9-community
     container_name: sonarqube
-    restart: always
+    restart: no
     environment:
       - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
     ports:
@@ -80,8 +80,8 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - ./pipeline-server/data/zap:/home/zap/.ZAP
-      - ./pipeline-server/data/zap-reports:/var/jenkins_home/zap-reports
+      - ./data/zap:/home/zap/.ZAP
+      - ./data/zap-reports:/var/zap/zap-reports
     command: >
       zap.sh -daemon -port 8080 -host 0.0.0.0
       -config api.disablekey=true
