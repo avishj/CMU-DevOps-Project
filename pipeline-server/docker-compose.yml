@@ -1,27 +1,4 @@
 services:
-#   gitlab:
-#     image: gitlab/gitlab-ce:latest
-#     container_name: gitlab
-#     restart: always
-#     hostname: '0.0.0.0'
-#     environment:
-#       GITLAB_OMNIBUS_CONFIG: |
-#         external_url 'http://0.0.0.0:8085'
-#         gitlab_rails['gitlab_shell_ssh_port'] = 2222
-#         # Enable GitLab Prometheus metrics
-#         prometheus_monitoring['enable'] = true
-#         gitlab_exporter['enable'] = true
-#     ports:
-#       - "8085:80"
-#       - "8443:443"
-#       - "2222:22"
-#     volumes:
-#       - ./pipeline-server/data/gitlab/config:/etc/gitlab
-#       - ./pipeline-server/data/gitlab/logs:/var/log/gitlab
-#       - ./pipeline-server/data/gitlab/data:/var/opt/gitlab
-#     shm_size: '256m'
-#     networks:
-#       - devops-spring
 
   prometheus:
     image: prom/prometheus:latest
@@ -30,8 +7,8 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./pipeline-server/data/prometheus/config:/etc/prometheus 
-      - ./pipeline-server/data/prometheus/data:/prometheus      
+      - ./data/prometheus/config:/etc/prometheus 
+      - ./data/prometheus/data:/prometheus      
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'             
@@ -48,9 +25,9 @@ services:
     ports:
       - "9002:9000"
     volumes:
-      - ./pipeline-server/data/sonarqube/data:/opt/sonarqube/data
-      - ./pipeline-server/data/sonarqube/logs:/opt/sonarqube/logs
-      - ./pipeline-server/data/sonarqube/extensions:/opt/sonarqube/extensions
+      - ./data/sonarqube/data:/opt/sonarqube/data
+      - ./data/sonarqube/logs:/opt/sonarqube/logs
+      - ./data/sonarqube/extensions:/opt/sonarqube/extensions
     networks:
       - devops-spring
 
@@ -61,7 +38,8 @@ services:
     ports:
       - "3001:3000"
     volumes:
-      - ./pipeline-server/data/grafana:/var/lib/grafana 
+      - ./data/grafana:/var/lib/grafana 
+      - ./data/grafana/datasources:/etc/grafana/provisioning/datasources
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     networks:
