@@ -14,7 +14,7 @@ scrape_configs:
   - job_name: 'jenkins'
     metrics_path: '/jenkins/prometheus/' # Requires Prometheus Metrics Plugin in Jenkins
     static_configs:
-      - targets: ['jenkins:8081']
+      - targets: ['jenkins:8080']
 
   # Add other scrape configs as needed (GitLab, SonarQube, Jenkins...)
   # - job_name: 'gitlab'

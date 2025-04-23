@@ -38,7 +38,7 @@ unclassified:
   prometheusConfiguration:
     collectingMetricsPeriodInSeconds: 15
     defaultNamespace: "jenkins"
-    path: "/prometheus"
+    path: "prometheus"
     useAuthenticatedEndpoint: false
 
   # gitHubConfiguration:
