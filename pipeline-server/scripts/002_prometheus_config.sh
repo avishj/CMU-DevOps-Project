@@ -12,7 +12,7 @@ scrape_configs:
     static_configs:
       - targets: ['prometheus:9090'] # Use service name and internal port
   - job_name: 'jenkins'
-    metrics_path: '/jenkins/prometheus' # Requires Prometheus Metrics Plugin in Jenkins
+    metrics_path: '/jenkins/prometheus/' # Requires Prometheus Metrics Plugin in Jenkins
     static_configs:
       - targets: ['jenkins:8081']
 
