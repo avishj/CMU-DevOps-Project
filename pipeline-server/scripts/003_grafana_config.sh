@@ -1,8 +1,8 @@
 #!/bin/bash
 
-mkdir -p ../data/grafana/provisioning/datasources
+mkdir -p ../data/grafana/provisioning
 
-cat > ../data/grafana/provisioning/datasources/datasource.yml << 'EOF'
+cat > ../data/grafana/provisioning/datasource.yml << 'EOF'
 apiVersion: 1
 
 datasources:

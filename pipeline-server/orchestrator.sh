@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rf data/
 cd scripts
 ./000_setup_ec2.sh
 ./001_file_structure.sh
