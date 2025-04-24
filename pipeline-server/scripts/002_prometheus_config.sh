@@ -16,7 +16,7 @@ scrape_configs:
     static_configs:
       - targets: ['jenkins:8080']
   - job_name: 'grafana'
-    metrics_path: '/api/metrics'
+    metrics_path: '/metrics'
     basic_auth:
       username: 'prometheus' 
       password: 'password'
