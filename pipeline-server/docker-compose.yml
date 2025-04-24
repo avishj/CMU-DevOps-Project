@@ -25,6 +25,7 @@ services:
       - SONAR_SECURITY_ADMIN_LOGIN=admin
       - SONAR_SECURITY_ADMIN_PASSWORD=password
       - SONAR_WEB_SYSTEMPASSCODE=password
+      - SONAR_LOG_LEVEL=TRACE
     ports:
       - "9002:9000"
     volumes:
