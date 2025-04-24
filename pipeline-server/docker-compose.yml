@@ -44,6 +44,7 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_SECURITY_ADMIN_PASSWORD=password
       - GF_SECURITY_DISABLE_INITIAL_ADMIN_PASSWORD_CHANGE=true
+      - GF_METRICS_ENABLED=true
     networks:
       - devops-spring
     depends_on:
