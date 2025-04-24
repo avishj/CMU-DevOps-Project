@@ -2900,7 +2900,6 @@ cat > ../data/grafana/provisioning/dashboards/grafana-dashboard.json << 'EOF'
 EOF
 
 cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
-
 {
   "annotations": {
     "list": [
@@ -4522,8 +4521,7 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
 
 EOF
 
-cat > ../data/provisioning/dashboards/sonarqube-stats.json << 'EOF'
-
+cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
 {
   "__inputs": [
     {
