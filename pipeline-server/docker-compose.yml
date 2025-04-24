@@ -45,6 +45,8 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=password
       - GF_SECURITY_DISABLE_INITIAL_ADMIN_PASSWORD_CHANGE=true
       - GF_METRICS_ENABLED=true
+      - GF_METRICS_BASIC_AUTH_USERNAME=prometheus
+      - GF_METRICS_BASIC_AUTH_PASSWORD=password
     networks:
       - devops-spring
     depends_on:
