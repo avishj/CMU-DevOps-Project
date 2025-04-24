@@ -12,11 +12,14 @@ mkdir -p ../data/sonarqube/extensions # For SonarQube plugins
 
 mkdir -p ../data/grafana                          # For Grafana dashboards, plugins, database
 mkdir -p ../data/grafana/provisioning/datasources # For Grafana data sources
+mkdir -p ../data/grafana/provisioning/dashboards  # For Grafana dashboards
 mkdir -p ../data/jenkins     # Jenkins home directory
 mkdir -p ../data/zap         # ZAP session data, reports, configs
 
-# Create the Prometheus configuration file
+# Create the configuration files
 touch ../data/prometheus/config/prometheus.yml
+touch ../data/grafana/datasources/datasource.yml
+touch ../data/grafana/dashboards/dashboard.yml
 
 # Fix permissions (insecure but simple for local development)
 chmod -R 777 ../data/
