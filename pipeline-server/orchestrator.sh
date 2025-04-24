@@ -7,4 +7,5 @@ cd scripts
 ./001_file_structure.sh
 ./002_prometheus_config.sh
 ./003_grafana_config.sh
+docker-compose build
 docker-compose up -d
