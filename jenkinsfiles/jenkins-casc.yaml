@@ -24,7 +24,7 @@ jenkins:
           password: "password"
   authorizationStrategy:
     loggedInUsersCanDoAnything:
-        allowAnonymousRead: true
+        allowAnonymousRead: false
 
 unclassified:
   location:
