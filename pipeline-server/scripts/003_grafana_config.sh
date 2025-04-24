@@ -5336,7 +5336,6 @@ cat > ../data/provisioning/dashboards/sonarqube-stats.json << 'EOF'
   "templating": {
     "list": []
   },
-  "refresh": "5s",
   "time": {
     "from": "now-15m",
     "to": "now"
