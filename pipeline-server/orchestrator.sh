@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker-compose down
+command -v docker-compose >/dev/null 2>&1 && docker-compose down
 rm -rf data/
 cd scripts
 ./000_setup_ec2.sh
