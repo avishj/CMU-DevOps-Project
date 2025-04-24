@@ -18,9 +18,9 @@ mkdir -p ../data/zap         # ZAP session data, reports, configs
 
 # Create the configuration files
 touch ../data/prometheus/config/prometheus.yml
-touch ../data/grafana/datasources/datasource.yml
-touch ../data/grafana/dashboards/dashboard-provider.yml
-touch ../data/grafana/dashboards/prometheus-dashboard.json
+touch ../data/grafana/provisioning/datasources/datasource.yml
+touch ../data/grafana/provisioning/dashboards/dashboard-provider.yml
+touch ../data/grafana/provisioning/dashboards/prometheus-dashboard.json
 
 # Fix permissions (insecure but simple for local development)
 chmod -R 777 ../data/

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-mkdir -p ../data/grafana/datasources
-mkdir -p ../data/grafana/dashboards
+mkdir -p ../data/grafana/provisioning/datasources
+mkdir -p ../data/grafana/provisioning/dashboards
 
-cat > ../data/grafana/datasources/datasource.yml << 'EOF'
+cat > ../data/grafana/provisioning/datasources/datasource.yml << 'EOF'
 apiVersion: 1
 
 datasources:
@@ -17,7 +17,7 @@ datasources:
 
 EOF
 
-cat > ../data/grafana/dashboards/dashboard-provider.yml << 'EOF'
+cat > ../data/grafana/provisioning/dashboards/dashboard-provider.yml << 'EOF'
 apiVersion: 1
 
 providers:
@@ -34,7 +34,7 @@ providers:
 
 EOF
 
-cat > ../data/grafana/dashboards/prometheus-dashboard.json << 'EOF'
+cat > ../data/grafana/provisioning/dashboards/prometheus-dashboard.json << 'EOF'
 {
   "__inputs": [
     {
