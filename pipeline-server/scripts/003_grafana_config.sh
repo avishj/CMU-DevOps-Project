@@ -2996,7 +2996,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "rate(jenkins_job_building_duration_count[1m])",
           "refId": "A"
@@ -3007,7 +3008,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3088,7 +3090,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_job_queuing_duration",
           "format": "time_series",
@@ -3101,7 +3104,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3165,7 +3169,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "rate(jenkins_job_queuing_duration_count[1m])",
           "refId": "A"
@@ -3176,7 +3181,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3243,7 +3249,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "(vm_memory_total_max - vm_memory_total_used) / vm_memory_total_max * 100.0",
           "format": "time_series",
@@ -3257,7 +3264,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3322,7 +3330,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "vm_memory_total_used",
           "format": "time_series",
@@ -3335,7 +3344,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3407,7 +3417,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_health_check_score",
           "format": "time_series",
@@ -3421,7 +3432,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3486,7 +3498,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "vm_uptime_milliseconds",
           "format": "time_series",
@@ -3501,7 +3514,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3565,7 +3579,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_node_offline_value",
           "refId": "A",
@@ -3577,7 +3592,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3643,7 +3659,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "vm_cpu_load",
           "format": "time_series",
@@ -3656,7 +3673,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3720,7 +3738,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_node_builds_count",
           "format": "time_series",
@@ -3735,7 +3754,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3798,7 +3818,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_runs_success_total",
           "format": "time_series",
@@ -3812,7 +3833,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3875,7 +3897,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_runs_aborted_total",
           "format": "time_series",
@@ -3890,7 +3913,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -3953,7 +3977,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_runs_unstable_total",
           "format": "time_series",
@@ -3968,7 +3993,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -4031,7 +4057,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_runs_failure_total",
           "format": "time_series",
@@ -4045,7 +4072,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -4109,7 +4137,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_queue_size_value",
           "format": "time_series",
@@ -4123,7 +4152,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -4187,7 +4217,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_executor_free_value",
           "format": "time_series",
@@ -4200,7 +4231,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -4282,7 +4314,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "avg(sum(jenkins_job_building_duration)/sum(jenkins_job_building_duration_count))",
           "format": "time_series",
@@ -4295,7 +4328,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -4377,7 +4411,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "default_jenkins_builds_last_build_duration_milliseconds",
           "format": "time_series",
@@ -4391,7 +4426,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     },
     {
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -4455,7 +4491,8 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
       "targets": [
         {
           "datasource": {
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
           },
           "expr": "jenkins_executor_in_use_value",
           "refId": "A"
