@@ -13,3 +13,4 @@ job-dsl:latest
 htmlpublisher
 workflow-cps
 prometheus:latest             # For exposing data for prometheus
+cloudbees-disk-usage-simple:latest
