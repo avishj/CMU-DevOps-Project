@@ -2892,7 +2892,7 @@ cat > ../data/grafana/provisioning/dashboards/grafana-dashboard.json << 'EOF'
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Grafana metrics",
+  "title": "Grafana Stats",
   "uid": "isFoa0z7k",
   "version": 1
 }
