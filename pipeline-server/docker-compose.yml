@@ -26,6 +26,7 @@ services:
       - SONAR_SECURITY_ADMIN_PASSWORD=password
       - SONAR_WEB_SYSTEMPASSCODE=password
       - SONAR_LOG_LEVEL=DEBUG
+      - SONAR_WEB_SSO_ENABLE=true
     ports:
       - "9002:9000"
     volumes:
