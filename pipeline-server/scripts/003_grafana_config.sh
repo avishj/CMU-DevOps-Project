@@ -17,7 +17,24 @@ datasources:
 
 EOF
 
-cat > ../data/grafana/dashboards/prometheus.json << 'EOF'
+cat > ../data/grafana/dashboards/dashboard-provider.yml << 'EOF'
+apiVersion: 1
+
+providers:
+  - name: 'default-dashboards'
+    orgId: 1
+    folder: ''
+    type: file
+    disableDeletion: true
+    updateIntervalSeconds: 10
+    allowUiUpdates: false
+    options:
+      path: /etc/grafana/provisioning/dashboards
+      foldersFromFilesStructure: false
+
+EOF
+
+cat > ../data/grafana/dashboards/prometheus-dashboard.json << 'EOF'
 {
   "__inputs": [
     {
