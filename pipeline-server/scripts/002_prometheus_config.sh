@@ -10,11 +10,15 @@ global:
 scrape_configs:
   - job_name: 'prometheus'
     static_configs:
-      - targets: ['prometheus:9090'] # Use service name and internal port
+      - targets: ['prometheus:9090']
   - job_name: 'jenkins'
-    metrics_path: '/jenkins/prometheus/' # Requires Prometheus Metrics Plugin in Jenkins
+    metrics_path: '/jenkins/prometheus/'
     static_configs:
       - targets: ['jenkins:8080']
+  - job_name: 'grafana'
+    metrics_path: '/api/metrics'
+    static_configs:
+      - targets: ['grafana:3000']
 
   # Add other scrape configs as needed (GitLab, SonarQube, Jenkins...)
   # - job_name: 'gitlab'
