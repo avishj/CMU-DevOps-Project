@@ -19,9 +19,12 @@ services:
   sonarqube:
     image: sonarqube:9.9-community
     container_name: sonarqube
-    restart: no
+    restart: always
     environment:
       - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+      - SONAR_SECURITY_ADMIN_LOGIN=admin
+      - SONAR_SECURITY_ADMIN_PASSWORD=password
+      - SONAR_WEB_SYSTEMPASSCODE=password
     ports:
       - "9002:9000"
     volumes:
@@ -94,7 +97,7 @@ services:
       context: ./../jenkinsfiles
       dockerfile: jenkins.dockerfile
     container_name: jenkins
-    restart: no
+    restart: always
     ports:
       - "8081:8080"
       - "50001:50000"

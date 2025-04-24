@@ -22,15 +22,12 @@ scrape_configs:
       password: 'password'
     static_configs:
       - targets: ['grafana:3000']
-
-  # Add other scrape configs as needed (GitLab, SonarQube, Jenkins...)
-  # - job_name: 'gitlab'
-  #   metrics_path: '/-/metrics'
-  #   static_configs:
-  #     - targets: ['gitlab:80']
-  # - job_name: 'sonarqube'
-  #   metrics_path: '/api/prometheus/metrics'
-  #   static_configs:
-  #     - targets: ['sonarqube:9000']
+  - job_name: 'sonarqube'
+    metrics_path: '/api/monitoring/metrics'
+    authorization:
+      type: Bearer
+      credentials: 'password'
+    static_configs:
+      - targets: ['sonarqube:9000']
 
 EOF
