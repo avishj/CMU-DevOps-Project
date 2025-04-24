@@ -4523,53 +4523,14 @@ EOF
 
 cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "7.2.1"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -4579,14 +4540,13 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
     ]
   },
   "editable": true,
-  "gnetId": 14152,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 4,
   "links": [],
   "panels": [
     {
       "collapsed": false,
-      "datasource": "${DS_PROMETHEUS}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -4599,24 +4559,57 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
       "type": "row"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {},
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
           "decimals": 0,
           "mappings": [],
-          "max": 100,
+          "max": 1,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4628,102 +4621,56 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 12,
         "x": 0,
         "y": 1
       },
-      "hiddenSeries": false,
       "id": 6,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "7.2.1",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "11.6.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "webjvmstate_systemloadaverage_percent",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "Average System Load",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "percentunit",
-          "label": null,
-          "logBase": 1,
-          "max": "1",
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4741,13 +4688,12 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         "y": 1
       },
       "id": 2,
-      "interval": null,
-      "links": [],
       "options": {
         "colorMode": "value",
         "graphMode": "none",
         "justifyMode": "center",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -4755,11 +4701,17 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "11.6.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "statistics_usercount",
           "instant": false,
           "interval": "",
@@ -4767,33 +4719,32 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "statistics_projectcount",
           "interval": "",
           "legendFormat": "Projects count",
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Statistics",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
           "mappings": [],
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -4816,9 +4767,9 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         "y": 9
       },
       "id": 4,
-      "interval": null,
-      "links": [],
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -4828,11 +4779,16 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "11.6.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "webjvmstate_maxmemorymb - webjvmstate_freememorymb",
           "format": "time_series",
           "hide": false,
@@ -4842,6 +4798,10 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "webjvmstate_maxmemorymb",
           "hide": false,
           "instant": false,
@@ -4850,6 +4810,10 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "webjvmstate_freememorymb",
           "hide": false,
           "interval": "",
@@ -4857,28 +4821,22 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Memory",
-      "transformations": [],
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
           "mappings": [],
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -4901,9 +4859,9 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         "y": 9
       },
       "id": 7,
-      "interval": null,
-      "links": [],
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -4913,11 +4871,16 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "11.6.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "webjvmstate_heapmaxmb_bytes - webjvmstate_heapusedmb_bytes",
           "format": "time_series",
           "hide": false,
@@ -4927,6 +4890,10 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "webjvmstate_heapmaxmb_bytes",
           "hide": false,
           "instant": false,
@@ -4935,6 +4902,10 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "webjvmstate_heapusedmb_bytes",
           "hide": false,
           "interval": "",
@@ -4942,28 +4913,22 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Heap",
-      "transformations": [],
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
           "mappings": [],
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -4986,9 +4951,9 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         "y": 9
       },
       "id": 8,
-      "interval": null,
-      "links": [],
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -4998,11 +4963,16 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "11.6.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "webjvmstate_nonheapcommittedmb_bytes - webjvmstate_nonheapusedmb_bytes",
           "format": "time_series",
           "hide": false,
@@ -5012,6 +4982,10 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "webjvmstate_nonheapcommittedmb_bytes",
           "hide": false,
           "instant": false,
@@ -5020,6 +4994,10 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "webjvmstate_nonheapusedmb_bytes",
           "hide": false,
           "interval": "",
@@ -5027,15 +5005,11 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Non Heap",
-      "transformations": [],
       "type": "gauge"
     },
     {
       "collapsed": false,
-      "datasource": "${DS_PROMETHEUS}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -5048,14 +5022,48 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
       "type": "row"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {},
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
           "decimals": 0,
           "mappings": [],
           "max": 100,
@@ -5064,8 +5072,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5077,105 +5084,56 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 8,
         "x": 0,
         "y": 18
       },
-      "hiddenSeries": false,
       "id": 15,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "7.2.1",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "11.6.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "searchstate_cpuusage",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "CPU Usage",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "percentunit",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
           "mappings": [],
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -5198,9 +5156,9 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         "y": 18
       },
       "id": 16,
-      "interval": null,
-      "links": [],
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -5210,11 +5168,16 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "11.6.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "searchstate_jvmheapmax_bytes - searchstate_jvmheapused_bytes",
           "format": "time_series",
           "hide": false,
@@ -5224,6 +5187,10 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "searchstate_jvmheapmax_bytes",
           "hide": false,
           "instant": false,
@@ -5232,6 +5199,10 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "searchstate_jvmheapused_bytes",
           "hide": false,
           "interval": "",
@@ -5239,28 +5210,22 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Heap",
-      "transformations": [],
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
           "mappings": [],
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "red",
-                "value": null
+                "color": "red"
               },
               {
                 "color": "#EAB839",
@@ -5283,9 +5248,9 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         "y": 18
       },
       "id": 17,
-      "interval": null,
-      "links": [],
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -5295,11 +5260,16 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "11.6.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "searchstate_diskavailable_bytes",
           "hide": false,
           "instant": false,
@@ -5308,6 +5278,10 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "searchstate_storesize_bytes",
           "hide": false,
           "interval": "",
@@ -5315,21 +5289,23 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+          },
           "expr": "searchstate_diskavailable_bytes - searchstate_storesize_bytes",
           "interval": "",
           "legendFormat": "Free",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Disk",
-      "transformations": [],
       "type": "gauge"
     }
   ],
-  "schemaVersion": 26,
-  "style": "dark",
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": []
@@ -5342,8 +5318,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
   "timezone": "",
   "title": "Sonarqube Stats",
   "uid": "sonarqube-stats",
-  "version": 2,
-  "description": ""
+  "version": 1
 }
 
 EOF
