@@ -1572,7 +1572,7 @@ cat > ../data/grafana/provisioning/dashboards/prometheus-dashboard.json << 'EOF'
   "timepicker": {},
   "timezone": "browser",
   "title": "Prometheus Stats",
-  "uid": "UDdpyzz7z",
+  "uid": "prometheus-stats",
   "version": 1
 }
 
@@ -2893,7 +2893,7 @@ cat > ../data/grafana/provisioning/dashboards/grafana-dashboard.json << 'EOF'
   "timepicker": {},
   "timezone": "",
   "title": "Grafana Stats",
-  "uid": "isFoa0z7k",
+  "uid": "grafana-stats",
   "version": 1
 }
 
@@ -4503,20 +4503,20 @@ cat > ../data/grafana/provisioning/dashboards/jenkins-dashboard.json << 'EOF'
     }
   ],
   "preload": false,
-  "refresh": "",
+  "refresh": "5s",
   "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Jenkins: Performance and Health Overview",
-  "uid": "haryan-jenkins",
+  "title": "Jenkins Stats",
+  "uid": "jenkins-stats",
   "version": 1
 }
 
