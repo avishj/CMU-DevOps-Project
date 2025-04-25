@@ -1,0 +1,23 @@
+    - name: Deploy web app to EC2 instance
+      hosts: ""
+      gather_facts: yes
+      become: yes
+      tasks:
+        - name: Install Java
+            apt:
+            name: java
+            state: present
+            when: ansible_os_family == "Debian"  # You can change this for RedHat/CentOS systems
+
+        - name: Deploy application files
+          copy:
+            src: /home/ec2-user/CMU-DevOps-Project/petclinic/target/spring-petclinic-3.4.0-SNAPSHOT.jar
+            dest: /springboot-app.jar
+            owner: root
+            group: root
+            mode: '0755'
+
+        - name: Run Spring Boot app via command line
+            command: java -jar /springboot-app.jar
+            async: 600    # Run the task asynchronously (timeout in seconds)
+            poll: 0       # Don't wait for the command to complete (non-blocking)

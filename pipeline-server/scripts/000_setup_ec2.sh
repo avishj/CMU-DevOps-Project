@@ -5,6 +5,10 @@
 sudo yum update -y
 sudo yum install -y docker
 sudo yum install -y git
+sudo yum install -y ansible
+sudo yum install -y java
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum install -y terraform
 sudo service docker start
 sudo chkconfig docker on
 
