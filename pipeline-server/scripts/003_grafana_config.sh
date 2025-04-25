@@ -4721,7 +4721,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "statistics_projectcount",
           "interval": "",
@@ -4787,7 +4787,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "webjvmstate_maxmemorymb - webjvmstate_freememorymb",
           "format": "time_series",
@@ -4800,7 +4800,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "webjvmstate_maxmemorymb",
           "hide": false,
@@ -4812,7 +4812,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "webjvmstate_freememorymb",
           "hide": false,
@@ -4879,7 +4879,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "webjvmstate_heapmaxmb_bytes - webjvmstate_heapusedmb_bytes",
           "format": "time_series",
@@ -4892,7 +4892,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "webjvmstate_heapmaxmb_bytes",
           "hide": false,
@@ -4904,7 +4904,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "webjvmstate_heapusedmb_bytes",
           "hide": false,
@@ -4971,7 +4971,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "webjvmstate_nonheapcommittedmb_bytes - webjvmstate_nonheapusedmb_bytes",
           "format": "time_series",
@@ -4984,7 +4984,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "webjvmstate_nonheapcommittedmb_bytes",
           "hide": false,
@@ -4996,7 +4996,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "webjvmstate_nonheapusedmb_bytes",
           "hide": false,
@@ -5110,7 +5110,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "searchstate_cpuusage",
           "interval": "",
@@ -5176,7 +5176,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "searchstate_jvmheapmax_bytes - searchstate_jvmheapused_bytes",
           "format": "time_series",
@@ -5189,7 +5189,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "searchstate_jvmheapmax_bytes",
           "hide": false,
@@ -5201,7 +5201,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "searchstate_jvmheapused_bytes",
           "hide": false,
@@ -5268,7 +5268,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "searchstate_diskavailable_bytes",
           "hide": false,
@@ -5280,7 +5280,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "searchstate_storesize_bytes",
           "hide": false,
@@ -5291,7 +5291,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
         {
           "datasource": {
             "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
+            "uid": "PBFA97CFB590B2093"
           },
           "expr": "searchstate_diskavailable_bytes - searchstate_storesize_bytes",
           "interval": "",
@@ -5304,7 +5304,7 @@ cat > ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json << 'EOF'
     }
   ],
   "preload": false,
-  "refresh": "",
+  "refresh": "5s",
   "schemaVersion": 41,
   "tags": [],
   "templating": {
