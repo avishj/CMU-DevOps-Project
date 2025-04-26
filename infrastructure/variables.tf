@@ -53,7 +53,6 @@ variable "admin_ssh_public_key" {
   # It should look something like "ssh-rsa AAAAB3NzaC1yc2EAAAA..."
   # You can often get this by running 'cat ~/.ssh/id_rsa.pub' on your local machine.
   # Alternatively, you can use file("~/.ssh/id_rsa.pub") if the file exists locally.
-  # default = file("~/.ssh/id_rsa.pub") # Uncomment this line to read from a file
 }
 
 # Variables for the VM Operating System image
@@ -61,23 +60,28 @@ variable "admin_ssh_public_key" {
 variable "vm_image_publisher" {
   description = "Publisher of the VM image"
   type        = string
-  default     = "Canonical"
+  default     = "Debian"
 }
 
 variable "vm_image_offer" {
   description = "Offer of the VM image"
   type        = string
-  default     = "UbuntuServer" 
+  default     = "debian-11" 
 }
 
 variable "vm_image_sku" {
   description = "SKU of the VM image"
   type        = string
-  default     = "20.04-LTS"
+  default     = "11"
 }
 
 variable "vm_image_version" {
   description = "Version of the VM image"
   type        = string
   default     = "latest"
+}
+
+variable "subscription_id" {
+  description = "Azure Subscription ID"
+  type = string
 }

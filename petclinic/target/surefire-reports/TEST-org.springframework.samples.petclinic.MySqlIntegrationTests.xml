@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="org.springframework.samples.petclinic.MySqlIntegrationTests" time="0.013" tests="2" errors="0" skipped="2" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="org.springframework.samples.petclinic.MySqlIntegrationTests" time="0.008" tests="2" errors="0" skipped="2" failures="0">
   <properties/>
   <testcase name="testFindAll" classname="org.springframework.samples.petclinic.MySqlIntegrationTests" time="0.0">
     <skipped message="disabledWithoutDocker is true and Docker is not available"/>
-    <system-out><![CDATA[22:15:07.064 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.20.4
-22:15:07.657 [main] WARN org.testcontainers.dockerclient.DockerClientProviderStrategy -- DOCKER_HOST unix:///var/run/docker.sock is not listening
+    <system-out><![CDATA[01:01:25.668 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.20.4
+01:01:26.275 [main] WARN org.testcontainers.dockerclient.DockerClientProviderStrategy -- DOCKER_HOST unix:///var/run/docker.sock is not listening
 java.io.IOException: com.sun.jna.LastErrorException: [13] Permission denied
 	at com.github.dockerjava.transport.DomainSocket.<init>(DomainSocket.java:63)
 	at com.github.dockerjava.transport.LinuxDomainSocket.<init>(LinuxDomainSocket.java:41)
@@ -91,8 +91,8 @@ Caused by: com.sun.jna.LastErrorException: [13] Permission denied
 	at com.github.dockerjava.transport.DomainSocket.open(DomainSocket.java:69)
 	at com.github.dockerjava.transport.DomainSocket.<init>(DomainSocket.java:59)
 	... 78 common frames omitted
-22:15:07.672 [main] INFO org.testcontainers.dockerclient.DockerMachineClientProviderStrategy -- docker-machine executable was not found on PATH ([/home/ec2-user/.local/bin, /home/ec2-user/bin, /usr/local/bin, /usr/bin, /usr/local/sbin, /usr/sbin, /home/ec2-user/.local/share/kitty-ssh-kitten/kitty/bin])
-22:15:07.674 [main] ERROR org.testcontainers.dockerclient.DockerClientProviderStrategy -- Could not find a valid Docker environment. Please check configuration. Attempted configurations were:
+01:01:26.283 [main] INFO org.testcontainers.dockerclient.DockerMachineClientProviderStrategy -- docker-machine executable was not found on PATH ([/home/ec2-user/.local/bin, /home/ec2-user/bin, /usr/local/bin, /usr/bin, /usr/local/sbin, /usr/sbin, /home/ec2-user/.local/share/kitty-ssh-kitten/kitty/bin])
+01:01:26.284 [main] ERROR org.testcontainers.dockerclient.DockerClientProviderStrategy -- Could not find a valid Docker environment. Please check configuration. Attempted configurations were:
 	DockerDesktopClientProviderStrategy: failed with exception NullPointerException (Cannot invoke "java.nio.file.Path.toString()" because the return value of "org.testcontainers.dockerclient.DockerDesktopClientProviderStrategy.getSocketPath()" is null)As no valid configuration was found, execution cannot continue.
 See https://java.testcontainers.org/on_failure.html for more details.
 ]]></system-out>

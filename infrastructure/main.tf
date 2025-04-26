@@ -1,5 +1,6 @@
 provider "azurerm" {
   features {}
+  subscription_id = var.subscription_id
 }
 
 # Resource Group
@@ -54,7 +55,8 @@ resource "azurerm_public_ip" "vm1_public_ip" {
   name                = "${var.resource_group_name}-vm1-public-ip"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
-  allocation_method   = "Dynamic" # Or "Static" for a fixed IP
+  allocation_method   = "Static" # for a fixed IP
+  sku                 = "Standard"
 }
 
 # Public IP Address for VM 2
@@ -62,7 +64,8 @@ resource "azurerm_public_ip" "vm2_public_ip" {
   name                = "${var.resource_group_name}-vm2-public-ip"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
-  allocation_method   = "Dynamic" # Or "Static" for a fixed IP
+  allocation_method   = "Static" # for a fixed IP
+  sku                 = "Standard"
 }
 
 # Network Interface for VM 1
