@@ -9,4 +9,4 @@ cd scripts
 ./003_grafana_config.sh
 ./004_terraform_config.sh
 docker-compose build
-docker-compose up -d
+docker-compose up prometheus sonarqube grafana zap -d

@@ -17,7 +17,9 @@ services:
       - devops-spring
 
   sonarqube:
-    image: sonarqube:9.9-community
+    build:
+      context: ./../miscfiles
+      dockerfile: sonarqube.dockerfile
     container_name: sonarqube
     restart: always
     environment:
@@ -29,6 +31,7 @@ services:
       - ./data/sonarqube/data:/opt/sonarqube/data
       - ./data/sonarqube/logs:/opt/sonarqube/logs
       - ./data/sonarqube/extensions:/opt/sonarqube/extensions
+      - ./data/sonarqube/tokens:/opt/sonarqubetokens
     networks:
       - devops-spring
 
@@ -60,14 +63,14 @@ services:
     networks:
       - devops-spring
     ports:
-      - "8080:8080"
+      - "8082:8082"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
       - ./data/zap:/home/zap/.ZAP
       - ./data/zap-reports:/var/zap/zap-reports
     command: >
-      zap.sh -daemon -port 8080 -host 0.0.0.0
+      zap.sh -daemon -port 8082 -host 0.0.0.0
       -config api.disablekey=true
       -config api.addrs.addr.name=.*
       -config api.addrs.addr.regex=true
@@ -92,7 +95,7 @@ services:
   jenkins:
     privileged: true
     build:
-      context: ./../jenkinsfiles
+      context: ./../miscfiles
       dockerfile: jenkins.dockerfile
     container_name: jenkins
     restart: always
@@ -107,6 +110,7 @@ services:
     environment:
       # - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
       - JENKINS_OPTS="--prefix=/jenkins"
+      - SSH_PRIVATE_KEY=$(cat ./miscfiles/aws.pem)
     networks:
       - devops-spring
     depends_on:

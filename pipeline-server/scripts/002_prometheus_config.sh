@@ -29,5 +29,9 @@ scrape_configs:
       credentials: 'password'
     static_configs:
       - targets: ['sonarqube:9000']
+  - job_name: 'springapplication'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8090']
 
 EOF
