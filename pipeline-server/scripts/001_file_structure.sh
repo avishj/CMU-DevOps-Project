@@ -21,6 +21,9 @@ touch ../data/prometheus/config/prometheus.yml
 touch ../data/grafana/provisioning/datasources/datasource.yml
 touch ../data/grafana/provisioning/dashboards/dashboard-provider.yml
 touch ../data/grafana/provisioning/dashboards/prometheus-dashboard.json
+touch ../data/grafana/provisioning/dashboards/jenkins-dashboard.json
+touch ../data/grafana/provisioning/dashboards/grafana-dashboard.json
+touch ../data/grafana/provisioning/dashboards/sonarqube-dashboard.json
 
 # Fix permissions (insecure but simple for local development)
 chmod -R 777 ../data/
