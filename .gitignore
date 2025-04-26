@@ -3,5 +3,4 @@ gitlab/
 .terraform/
 .terraform.lock.hcl
 *.tfstate
-*.tfvars
 repomix-*

@@ -1,0 +1,2 @@
+subscription_id = "1b453d3a-af3d-4a40-a6be-f71dd5f8f026"
+admin_ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcXYbsx844anIi/iE2Fu4TKTcjl1Ioo5PgWa2c9CNdSEGkzLWGCcpHGLk+q+f2XyRYfkjH8qym1lk/zEAPOtR3CMozWjdV3RrIRorW0wOe9FzIOX/t519u+gm1LV5+3fZ1YUcneP6G53dlbPsLfglcJSpDahrakSiTRlYl6nVb0eAsGi+45m+/kRcJg5+C0B1m6GDCeGtSW6PYgx6E/lxNZIJ36I+v8SyUbw5UADLBvYUFXH7NzobX1MC9olMa9pYMGN1ROjkfmawEusA0BvUBRD12iJTxWWWNscjnu+6xiXHXXBz9FbxfF+54t/HpqGf6BHmoVow4IC4Q10w5b+e7 ec2-user@ip-172-31-1-46.us-east-2.compute.internal"
