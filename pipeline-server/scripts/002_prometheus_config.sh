@@ -32,6 +32,6 @@ scrape_configs:
   - job_name: 'springapplication'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['ip-172-31-36-9.ec2.internal:8079']
+      - targets: ['ec2-3-149-234-178.us-east-2.compute.amazonaws.com:8090']
 
 EOF

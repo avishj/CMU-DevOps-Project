@@ -11,7 +11,7 @@ credentials:
           - string:
               scope: GLOBAL
               id: "sonarqube-token-jenkins" 
-              secret: "sqa_dc7b6b29c63a73d7f161899e13ef28842ff9b4e2" 
+              secret: "sqa_5dfca5d2d20c414256a733e34b1d5124d72f8ade" 
               # secret: "${file:/shared/sonarqube-token.txt}" 
               description: "SonarQube analysis token"
           - basicSSHUserPrivateKey:
