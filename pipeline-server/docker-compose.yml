@@ -107,10 +107,11 @@ services:
       # - ./data/jenkins:/var/jenkins_home
       # - ./data/jenkins:/var/jenkins_home 
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./../miscfiles/aws.pem:/var/jenkins_home/aws.pem
     environment:
       # - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
       - JENKINS_OPTS="--prefix=/jenkins"
-      - SSH_PRIVATE_KEY=$(cat ./miscfiles/aws.pem)
+      # - SSH_PRIVATE_KEY=${SSH_KEY_CONTENT}
     networks:
       - devops-spring
     depends_on:

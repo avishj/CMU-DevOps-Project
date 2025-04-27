@@ -11,7 +11,7 @@ credentials:
           - string:
               scope: GLOBAL
               id: "sonarqube-token-jenkins" 
-              secret: "sqa_067384f36b74deb81d24b7d708ba33aa7c1ca9cc" 
+              secret: "sqa_dc7b6b29c63a73d7f161899e13ef28842ff9b4e2" 
               # secret: "${file:/shared/sonarqube-token.txt}" 
               description: "SonarQube analysis token"
           - basicSSHUserPrivateKey:
@@ -21,7 +21,7 @@ credentials:
               description: "SSH key for EC2 instance deployment"
               privateKeySource:
                 directEntry:
-                  privateKey: "${SSH_PRIVATE_KEY}"
+                  privateKey: "${readFile:/var/jenkins_home/aws.pem}"
 
 
 jenkins:
